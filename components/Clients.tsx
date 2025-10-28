@@ -8,7 +8,7 @@ import { InfiniteMovingCards } from "./ui/InfiniteCards";
 const Clients = () => {
   return (
     <section id="testimonials" className="py-20">
-      <h1 className="heading">
+      <h1 className="heading text-black">
         Kind words from
         <span className="text-purple"> satisfied clients</span>
       </h1>
@@ -38,7 +38,7 @@ const Clients = () => {
                   src={company.nameImg}
                   alt={company.name}
                   width={company.id === 4 || company.id === 5 ? 100 : 150}
-                  className="md:w-24 w-20"
+                  className="md:w-24 w-20 text-black"
                 />
               </div>
             </React.Fragment>
