@@ -1,4 +1,5 @@
 import { FaLocationArrow } from "react-icons/fa6";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
@@ -67,10 +68,29 @@ const Hero = () => {
               position="right"
             />
           </a>
+
+            {/* social icons */}
+            <div className="flex gap-4 mt-6 justify-center">
+              {/* Whatsapp Icon */}
+              <button onClick={() => window.open('https://wa.me/1234567890', '_blank')}
+                className="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-salte-600 hover:border-green-400/50 transition-all duration-300 group"
+                title="Contact on WhatsApp"
+                >
+                <FaWhatsapp className="w-6 h-6 text-green-400 group-hover:scale-110 transition-transfrom"/>
+              </button>
+
+              {/* Instagram Icon */}
+              <button onClick={() => window.open('https://instagram.com/yourusername', '_blank')}
+                className="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-salte-600 hover:border-pink-500/50 transition-all duration-300 group"
+                title="Follow on Instagram"
+                >
+                  <FaInstagram className="w-6 h-6 text-pink-500 group-hover:scale-110 transition-transfrom"/>
+              </button>
+            </div>
         </div>
       </div>
     </div>
   );
 };
-
+ 
 export default Hero;

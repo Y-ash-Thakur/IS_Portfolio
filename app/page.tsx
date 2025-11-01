@@ -10,13 +10,17 @@ import Approach from "@/components/Approach";
 import Experience from "@/components/Experience";
 import RecentProjects from "@/components/RecentProjects";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
+import About from "@/components/AboutUs";
+import SimpleLoading from "@/components/SimpleLoading";
 
 const Home = () => {
   return (
     <main className="relative bg-white flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
+      <SimpleLoading/>
       <div className="max-w-7xl w-full">
         <FloatingNav navItems={navItems} />
         <Hero />
+        <About/>
         <Grid />
         <RecentProjects />
         <Clients />
