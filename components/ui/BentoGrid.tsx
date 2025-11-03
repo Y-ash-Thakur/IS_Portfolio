@@ -10,7 +10,7 @@ import GridGlobe from "./GridGlobe";
 import animationData from "@/data/confetti.json";
 import MagicButton from "../MagicButton";
 
-const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
+import Lottie from "lottie-react";
 
 export const BentoGrid = ({
   className,
@@ -220,7 +220,12 @@ export const BentoGridItem = ({
               <div
                 className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"}`}
               >
-                <Lottie options={defaultOptions} height={200} width={400} />
+                <Lottie 
+                  animationData={animationData}
+                  loop={copied}
+                  autoplay={copied}
+                  style={{ height: 200, width: 400 }}
+                />
               </div>
 
               <MagicButton

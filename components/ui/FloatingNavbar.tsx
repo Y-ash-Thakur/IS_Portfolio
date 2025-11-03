@@ -16,8 +16,8 @@ export const FloatingNav = ({
   logo = {
     src: "/SpecBadgeLogo.png",
     alt: "Company Logo",
-    width: 120,
-    height: 40,
+    width: 140,
+    height: 48,
   }
 }: {
   navItems: {
@@ -61,45 +61,44 @@ export const FloatingNav = ({
           // change rounded-full to rounded-lg
           // remove dark:border-white/[0.2] dark:bg-black bg-white border-transparent
           // change  pr-2 pl-8 py-2 to px-10 py-5
-          "flex max-w-fit md:min-w-[70vw] lg:min-w-fit fixed z-[5000] top-10 inset-x-0 mx-auto px-10 py-5 rounded-lg border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center justify-center space-x-4",
+          "flex max-w-fit md:min-w-[70vw] lg:min-w-fit fixed z-[5000] top-10 inset-x-0 mx-auto px-12 py-6 rounded-lg border border-neutral-200 bg-white shadow-[0px_6px_12px_-6px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.06)] items-center justify-center space-x-6",
           className
         )}
         style={{
-          backdropFilter: "blur(16px) saturate(180%)",
-          backgroundColor: "rgba(17, 25, 40, 0.75)",
+          backdropFilter: "blur(8px)",
+          backgroundColor: "#ffffff",
           borderRadius: "12px",
-          border: "1px solid rgba(255, 255, 255, 0.125)",
+          border: "1px solid rgba(0, 0, 0, 0.06)",
         }}
       >
         {/* Company Logo - Left Side */}
 
         <Link
-        href='/'
-        className="flex items-center mr-4 hover:opacity-80 transition-opacity"
-        />
-
-        {/* Using Next.js Image component */}
-
-        <Image
-          src={logo.src}
-          alt={logo.alt}
-          width={logo.width || 80}
-          height={logo.height || 80}
-          className="rounded-lg"
-        />
+          href='/'
+          className="flex items-center mr-6 hover:opacity-90 transition-opacity"
+        >
+          {/* Using Next.js Image component */}
+          <Image
+            src={logo.src}
+            alt={logo.alt}
+            width={logo.width || 140}
+            height={logo.height || 48}
+            className="rounded-lg h-12 w-auto"
+          />
+        </Link>
 
         {navItems.map((navItem: any, idx: number) => (
           <Link
             key={`link=${idx}`}
             href={navItem.link}
             className={cn(
-              "relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
+              "relative items-center flex space-x-2 text-slate-800 hover:text-slate-900"
             )}
           >
             <span className="block sm:hidden">{navItem.icon}</span>
             {/* add !cursor-pointer */}
             {/* remove hidden sm:block for the mobile responsive */}
-            <span className=" text-sm !cursor-pointer">{navItem.name}</span>
+            <span className=" text-base font-medium !cursor-pointer">{navItem.name}</span>
           </Link>
         ))}
         {/* remove this login btn */}
