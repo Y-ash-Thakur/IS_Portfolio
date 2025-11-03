@@ -19,7 +19,6 @@ const Home = () => {
       <SimpleLoading/>
       <div className="max-w-7xl w-full">
         <FloatingNav navItems={navItems} />
-        <Hero />
         <About/>
         <Grid />
         <RecentProjects />
