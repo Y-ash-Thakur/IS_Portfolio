@@ -26,6 +26,12 @@ export const FloatingNav = ({
     icon?: JSX.Element;
   }[];
   className?: string;
+  logo?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  }
 }) => {
   const { scrollYProgress } = useScroll();
 
