@@ -52,7 +52,16 @@ useEffect(() => {
   document.body.style.setProperty("--pointer-color", pointerColor);
   document.body.style.setProperty("--size", size);
   document.body.style.setProperty("--blending-value", blendingValue);
-})
+}, [
+  firstColor,
+  secondColor,
+  thirdColor,
+  fourthColor,
+  fifthColor,
+  pointerColor,
+  size,
+  blendingValue,
+])
 
   useEffect(() => {
     function move() {
@@ -79,6 +88,7 @@ useEffect(() => {
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
+    if(typeof navigator === 'undefined') return;
     setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
   }, []);
 
