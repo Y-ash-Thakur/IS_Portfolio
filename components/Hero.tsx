@@ -1,3 +1,5 @@
+"use client";
+
 import { FaLocationArrow } from "react-icons/fa6";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 
