@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 const AboutUs = () => {
   return (
     <section id="about" className="relative w-full py-20">
-      <div className="w-full mx-0 text-center border border-gray-200 dark:border-gray-700 rounded-lg py-5 shadow-lg px-10">
+      <div className="w-full mx-0 text-center border border-gray-200 dark:border-gray-700 rounded-2xl py-5 shadow-lg px-10">
         <motion.h2
           initial={{ opacity: 0, y: 50}}
           whileInView={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ const AboutUs = () => {
             </p>
 
             <p className="text-lg text-black leading-relaxed">
-              Let's 
+              Lets 
             </p>
           </motion.div>
       </div>

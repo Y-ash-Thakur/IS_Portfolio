@@ -8,10 +8,17 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export const FloatingNav = ({
   navItems,
   className,
+  logo = {
+    src: "/SpecBadgeLogo.png",
+    alt: "Company Logo",
+    width: 120,
+    height: 40,
+  }
 }: {
   navItems: {
     name: string;
@@ -58,6 +65,23 @@ export const FloatingNav = ({
           border: "1px solid rgba(255, 255, 255, 0.125)",
         }}
       >
+        {/* Company Logo - Left Side */}
+
+        <Link
+        href='/'
+        className="flex items-center mr-4 hover:opacity-80 transition-opacity"
+        />
+
+        {/* Using Next.js Image component */}
+
+        <Image
+          src={logo.src}
+          alt={logo.alt}
+          width={logo.width || 80}
+          height={logo.height || 80}
+          className="rounded-lg"
+        />
+
         {navItems.map((navItem: any, idx: number) => (
           <Link
             key={`link=${idx}`}
