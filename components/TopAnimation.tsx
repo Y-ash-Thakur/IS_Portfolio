@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-center w-full h-screen bg-white overflow-hidden">
+    <div className="flex items-center justify-center w-full h-screen overflow-hidden">
       <div className="relative w-[90%] max-w-4xl">
         <motion.img
           src="/SpecBadge Logo.png"

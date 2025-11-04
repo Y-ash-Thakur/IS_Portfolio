@@ -104,7 +104,7 @@ export const BentoGridItem = ({
   };
 
   const handleCopy = () => {
-    const text = "hsu@jsmastery.pro";
+    const text = "info.specbadge@gmail.com";
     navigator.clipboard.writeText(text);
     setCopied(true);
   };
