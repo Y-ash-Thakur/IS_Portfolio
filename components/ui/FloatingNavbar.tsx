@@ -37,11 +37,15 @@ export const FloatingNav = ({
 
   // set true for the initial state so that nav bar is visible in the hero section
   const [visible, setVisible] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useMotionValueEvent(scrollYProgress, "change", () => {
-  setVisible(true);
-});
+    setVisible(true);
+  });
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -58,10 +62,7 @@ export const FloatingNav = ({
           duration: 0.2,
         }}
         className={cn(
-          // change rounded-full to rounded-lg
-          // remove dark:border-white/[0.2] dark:bg-black bg-white border-transparent
-          // change  pr-2 pl-8 py-2 to px-10 py-5
-          "flex max-w-fit md:min-w-[70vw] lg:min-w-fit fixed z-[5000] top-10 inset-x-0 mx-auto px-12 py-6 rounded-lg border border-neutral-200 bg-white shadow-[0px_6px_12px_-6px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.06)] items-center justify-center space-x-6",
+          "flex max-w-[95vw] sm:max-w-fit md:min-w-[70vw] lg:min-w-fit fixed z-[5000] top-4 sm:top-6 md:top-10 inset-x-0 mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-3 sm:py-4 md:py-5 lg:py-6 rounded-lg border border-neutral-200 bg-white shadow-[0px_6px_12px_-6px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.06)] items-center justify-between sm:justify-center space-x-2 sm:space-x-4 md:space-x-6",
           className
         )}
         style={{
@@ -72,40 +73,112 @@ export const FloatingNav = ({
         }}
       >
         {/* Company Logo - Left Side */}
-
         <Link
           href='/'
-          className="flex items-center mr-6 hover:opacity-90 transition-opacity"
+          className="flex items-center mr-2 sm:mr-4 md:mr-6 hover:opacity-90 transition-opacity flex-shrink-0"
         >
-          {/* Using Next.js Image component */}
           <Image
             src={logo.src}
             alt={logo.alt}
             width={logo.width || 140}
             height={logo.height || 48}
-            className="rounded-lg h-12 w-auto"
+            className="rounded-lg h-8 sm:h-10 md:h-12 w-auto"
+            priority
           />
         </Link>
 
-        {navItems.map((navItem: any, idx: number) => (
-          <Link
-            key={`link=${idx}`}
-            href={navItem.link}
-            className={cn(
-              "relative items-center flex space-x-2 text-slate-800 hover:text-slate-900"
-            )}
-          >
-            <span className="block sm:hidden">{navItem.icon}</span>
-            {/* add !cursor-pointer */}
-            {/* remove hidden sm:block for the mobile responsive */}
-            <span className=" text-base font-medium !cursor-pointer">{navItem.name}</span>
-          </Link>
-        ))}
-        {/* remove this login btn */}
-        {/* <button className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
-          <span>Login</span>
-          <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
-        </button> */}
+        {/* Desktop Navigation - Hidden on mobile */}
+        <nav className="hidden md:flex items-center space-x-4 lg:space-x-6">
+          {navItems.map((navItem: any, idx: number) => (
+            <Link
+              key={`link=${idx}`}
+              href={navItem.link}
+              className={cn(
+                "relative items-center flex space-x-2 text-slate-800 hover:text-slate-900 transition-colors"
+              )}
+            >
+              <span className="text-sm md:text-base font-medium !cursor-pointer whitespace-nowrap">
+                {navItem.name}
+              </span>
+            </Link>
+          ))}
+        </nav>
+
+        {/* Tablet Navigation - Show icons with text */}
+        <nav className="hidden sm:flex md:hidden items-center space-x-3">
+          {navItems.map((navItem: any, idx: number) => (
+            <Link
+              key={`link-tablet=${idx}`}
+              href={navItem.link}
+              className={cn(
+                "relative items-center flex flex-col space-y-1 text-slate-800 hover:text-slate-900 transition-colors"
+              )}
+            >
+              {navItem.icon && (
+                <span className="text-lg">{navItem.icon}</span>
+              )}
+              <span className="text-xs font-medium !cursor-pointer whitespace-nowrap">
+                {navItem.name}
+              </span>
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={toggleMobileMenu}
+          className="md:hidden flex flex-col items-center justify-center w-8 h-8 space-y-1.5 focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          <motion.span
+            animate={mobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className="w-6 h-0.5 bg-slate-800 rounded"
+          />
+          <motion.span
+            animate={mobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.2 }}
+            className="w-6 h-0.5 bg-slate-800 rounded"
+          />
+          <motion.span
+            animate={mobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className="w-6 h-0.5 bg-slate-800 rounded"
+          />
+        </button>
+
+        {/* Mobile Menu Dropdown */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-full left-0 right-0 mt-2 mx-4 bg-white rounded-lg border border-neutral-200 shadow-lg overflow-hidden md:hidden"
+            >
+              <nav className="flex flex-col py-2">
+                {navItems.map((navItem: any, idx: number) => (
+                  <Link
+                    key={`link-mobile=${idx}`}
+                    href={navItem.link}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "flex items-center space-x-3 px-4 py-3 text-slate-800 hover:bg-slate-50 hover:text-slate-900 transition-colors"
+                    )}
+                  >
+                    {navItem.icon && (
+                      <span className="text-xl flex-shrink-0">{navItem.icon}</span>
+                    )}
+                    <span className="text-base font-medium !cursor-pointer">
+                      {navItem.name}
+                    </span>
+                  </Link>
+                ))}
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </AnimatePresence>
   );
