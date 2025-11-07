@@ -10,14 +10,22 @@ const pacifico = Pacifico({
 
 export default function Home() {
   return (
-    <div className="relative flex items-center justify-center w-full h-screen bg-white overflow-hidden">
+    <div className="relative flex items-center justify-center w-full h-screen overflow-hidden">
+      {/* 🌈 Radial Gradient Background */}
+      <div
+  className="absolute top-0 left-0 w-full h-full z-[0]
+    bg-[radial-gradient(ellipse_180%_100%_at_80%_20%,rgba(99,102,241,0.25),rgba(255,255,255,0))]
+    dark:bg-[radial-gradient(ellipse_180%_80%_at_80%_40%,rgba(147,51,234,0.35),rgba(255,255,255,0))]"
+/>
+
+
       {/* Wrapper that allows visible overflow */}
-      <div className="relative w-[90%] max-w-4xl flex justify-center items-center py-8" style={{ overflow: "visible" }}>
+      <div className="relative w-[90%] max-w-4xl flex justify-center items-center py-8 z-[10]" style={{ overflow: "visible" }}>
         <motion.div style={{ overflow: "visible" }}>
-        <motion.h1
+          <motion.h1
             className={`${pacifico.className} text-center text-[10vw] md:text-[8vw] font-bold
             bg-gradient-to-r from-[#0B123D] via-[#3F2E7A] to-[#6C1E9C]
-            text-transparent bg-clip-text select-none pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.12)]
+            text-transparent bg-clip-text select-none pointer-events-none
             leading-[1.3] pb-8`}
             initial={{
               clipPath: "inset(0% 100% 0% 0%)",
@@ -45,36 +53,41 @@ export default function Home() {
           </motion.h1>
 
           <motion.h5
-              className="text-gray-500 text-sm md:text-base text-bold text-center tracking-wide"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 5.2, duration: 0.6, ease: 'easeOut' }}
+            className="text-gray-500 text-sm md:text-base font-semibold text-center tracking-wide"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 5.2, duration: 0.6, ease: "easeOut" }}
           >
             Fueling Potential, Transforming Future
           </motion.h5>
 
-          {/* social icons */}
-          <motion.div className="flex gap-4 mt-6 justify-center"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 5.2, duration: 0.6, ease: 'easeOut' }}
+          {/* Social Icons */}
+          <motion.div
+            className="flex gap-4 mt-6 justify-center"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 5.2, duration: 0.6, ease: "easeOut" }}
           >
-              {/* Whatsapp Icon */}
-              <button onClick={() => window.open('https://wa.me/1234567890', '_blank')}
-                className="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-salte-600 hover:border-green-400/50 transition-all duration-300 group"
-                title="Contact on WhatsApp"
-                >
-                <FaWhatsapp className="w-6 h-6 text-green-400 group-hover:scale-110 transition-transfrom"/>
-              </button>
+            {/* WhatsApp Icon */}
+            <button
+              onClick={() => window.open("https://wa.me/1234567890", "_blank")}
+              className="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 hover:border-green-400/50 transition-all duration-300 group"
+              title="Contact on WhatsApp"
+            >
+              <FaWhatsapp className="w-6 h-6 text-green-400 group-hover:scale-110 transition-transform" />
+            </button>
 
-              {/* Instagram Icon */}
-              <button onClick={() => window.open('https://instagram.com/yourusername', '_blank')}
-                className="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-salte-600 hover:border-pink-500/50 transition-all duration-300 group"
-                title="Follow on Instagram"
-                >
-                  <FaInstagram className="w-6 h-6 text-pink-500 group-hover:scale-110 transition-transfrom"/>
-              </button>
-            </motion.div>
+            {/* Instagram Icon */}
+            <button
+              onClick={() =>
+                window.open("https://instagram.com/yourusername", "_blank")
+              }
+              className="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 hover:border-pink-500/50 transition-all duration-300 group"
+              title="Follow on Instagram"
+            >
+              <FaInstagram className="w-6 h-6 text-pink-500 group-hover:scale-110 transition-transform" />
+            </button>
+          </motion.div>
         </motion.div>
       </div>
     </div>
