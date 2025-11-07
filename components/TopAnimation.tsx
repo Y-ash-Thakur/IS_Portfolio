@@ -14,9 +14,9 @@ export default function Home() {
       {/* Wrapper that allows visible overflow */}
       <div className="relative w-[90%] max-w-4xl flex justify-center items-center py-8" style={{ overflow: "visible" }}>
         <motion.div style={{ overflow: "visible" }}>
-          <motion.h1
+        <motion.h1
             className={`${pacifico.className} text-center text-[10vw] md:text-[8vw] font-bold
-            bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700
+            bg-gradient-to-r from-[#0B123D] via-[#3F2E7A] to-[#6C1E9C]
             text-transparent bg-clip-text select-none pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.12)]
             leading-[1.3] pb-8`}
             initial={{
@@ -43,6 +43,7 @@ export default function Home() {
           >
             SpecBadge
           </motion.h1>
+
           <motion.h5
               className="text-gray-500 text-sm md:text-base text-bold text-center tracking-wide"
               initial={{ opacity: 0, y: 10 }}
