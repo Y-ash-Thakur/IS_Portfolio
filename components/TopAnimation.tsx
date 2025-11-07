@@ -14,8 +14,8 @@ export default function Home() {
       {/* 🌈 Radial Gradient Background */}
       <div
   className="absolute top-0 left-0 w-full h-full z-[0]
-    bg-[radial-gradient(ellipse_180%_100%_at_80%_20%,rgba(99,102,241,0.25),rgba(255,255,255,0))]
-    dark:bg-[radial-gradient(ellipse_180%_80%_at_80%_40%,rgba(147,51,234,0.35),rgba(255,255,255,0))]"
+    bg-[radial-gradient(ellipse_120%_80%_at_80%_80%,rgba(99,102,241,0.25),rgba(255,255,255,0))]
+    dark:bg-[radial-gradient(ellipse_120%_80%_at_80%_60%,rgba(147,51,234,0.35),rgba(255,255,255,0))]"
 />
 
 
