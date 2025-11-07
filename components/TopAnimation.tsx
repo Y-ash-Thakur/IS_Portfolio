@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Pacifico } from "next/font/google";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 const pacifico = Pacifico({
   subsets: ["latin"],
@@ -43,13 +44,36 @@ export default function Home() {
             SpecBadge
           </motion.h1>
           <motion.h5
-              className="mt-4 text-gray-500 text-sm md:text-base text-bold text-center tracking-wide"
+              className="text-gray-500 text-sm md:text-base text-bold text-center tracking-wide"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 5.2, duration: 0.6, ease: 'easeOut' }}
           >
             Fueling Potential, Transforming Future
           </motion.h5>
+
+          {/* social icons */}
+          <motion.div className="flex gap-4 mt-6 justify-center"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 5.2, duration: 0.6, ease: 'easeOut' }}
+          >
+              {/* Whatsapp Icon */}
+              <button onClick={() => window.open('https://wa.me/1234567890', '_blank')}
+                className="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-salte-600 hover:border-green-400/50 transition-all duration-300 group"
+                title="Contact on WhatsApp"
+                >
+                <FaWhatsapp className="w-6 h-6 text-green-400 group-hover:scale-110 transition-transfrom"/>
+              </button>
+
+              {/* Instagram Icon */}
+              <button onClick={() => window.open('https://instagram.com/yourusername', '_blank')}
+                className="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-salte-600 hover:border-pink-500/50 transition-all duration-300 group"
+                title="Follow on Instagram"
+                >
+                  <FaInstagram className="w-6 h-6 text-pink-500 group-hover:scale-110 transition-transfrom"/>
+              </button>
+            </motion.div>
         </motion.div>
       </div>
     </div>

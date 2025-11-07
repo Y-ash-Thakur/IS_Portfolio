@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 const AboutUs = () => {
   return (
-    <section id="about" className="relative w-full py-14 sm:py-16 md:py-20 mt-2 sm:mt-6 md:mt-10 z-20 scroll-mt-24">
+    <section id="about" className="relative w-full py-14 sm:py-16 md:py-20 mt-2 sm:mt-6 md:mt-10 z-20 scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-36">
       {/* Centered heading outside the card */}
       <div className="max-w-6xl mx-auto mb-5 sm:mb-6 md:mb-8 text-center px-4 sm:px-6">
         <motion.h2
