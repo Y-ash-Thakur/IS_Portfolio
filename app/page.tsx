@@ -38,7 +38,7 @@ const Home = () => {
             transition={{ duration: 0.5 }}
             className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
           >
-            <SimpleLoading />
+            {/* <SimpleLoading /> */}
           </motion.div>
         ) : (
           <motion.div
