@@ -1,82 +1,81 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa6";
-
 import { projects } from "@/data";
-import { PinContainer } from "./ui/Pin";
 
 const RecentProjects = () => {
   return (
-    <div className="py-20 scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-36" id="projects">
-      <h1 className="heading text-black">
+    <section className="py-20 relative overflow-hidden" id="projects">
+      <h1 className="heading text-black text-center mb-10">
         A small selection of{" "}
-        <span className="text-purple">recent projects</span>
+        <span className="text-purple-600">recent projects</span>
       </h1>
-      <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
+
+      {/* Horizontal Carousel */}
+      <motion.div
+        className="flex overflow-x-auto gap-10 px-10 snap-x snap-mandatory scrollbar-hide cursor-grab"
+        whileTap={{ cursor: "grabbing" }}
+      >
         {projects.map((item) => (
-          <div
-            className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
+          <motion.div
             key={item.id}
+            className="snap-center flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[40vw] lg:w-[28vw]"
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
           >
-            <PinContainer
-              title="/ui.aceternity.com"
-              href="https://twitter.com/mannupaaji"
-            >
-              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
-                <div
-                  className="relative w-full h-full overflow-hidden lg:rounded-3xl"
-                  style={{ backgroundColor: "#13162D" }}
-                >
-                  <img src="/bg.png" alt="bgimg" />
-                </div>
+            {/* Card */}
+            <div className="relative bg-white shadow-lg rounded-3xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500 ease-in-out">
+              {/* Image Section */}
+              <div className="relative w-full h-[250px] flex justify-center items-center bg-[#13162D]">
                 <img
                   src={item.img}
-                  alt="cover"
-                  className="z-10 absolute bottom-0"
+                  alt={item.title}
+                  className="object-contain max-h-[250px] z-10"
                 />
               </div>
 
-              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-black">
-                {item.title}
-              </h1>
+              {/* Content */}
+              <div className="p-6">
+                <h2 className="font-bold text-xl text-black mb-2 line-clamp-1">
+                  {item.title}
+                </h2>
 
-              <p
-                className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
-                style={{
-                  color: "#BEC1DD",
-                  margin: "1vh 0",
-                }}
-              >
-                {item.des}
-              </p>
+                <p
+                  className="text-gray-500 text-sm line-clamp-2 mb-4"
+                  style={{ color: "#6b7280" }}
+                >
+                  {item.des}
+                </p>
 
-              <div className="flex items-center justify-between mt-7 mb-3">
-                <div className="flex items-center">
-                  {item.iconLists.map((icon, index) => (
-                    <div
-                      key={index}
-                      className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
-                      style={{
-                        transform: `translateX(-${5 * index + 2}px)`,
-                      }}
-                    >
-                      <img src={icon} alt="icon5" className="p-2" />
-                    </div>
-                  ))}
-                </div>
+                <div className="flex items-center justify-between">
+                  {/* Tech Icons */}
+                  <div className="flex items-center">
+                    {item.iconLists.map((icon, index) => (
+                      <div
+                        key={index}
+                        className="border border-gray-200 rounded-full bg-black w-8 h-8 flex justify-center items-center"
+                        style={{
+                          transform: `translateX(-${5 * index + 2}px)`,
+                        }}
+                      >
+                        <img src={icon} alt="tech" className="p-2" />
+                      </div>
+                    ))}
+                  </div>
 
-                <div className="flex justify-center items-center">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                    Check Live Site
-                  </p>
-                  <FaLocationArrow className="ms-3" color="#CBACF9" />
+                  {/* Live Site Link */}
+                  <div className="flex items-center text-purple-600 text-sm font-medium">
+                    <span>Check Live Site</span>
+                    <FaLocationArrow className="ml-2" />
+                  </div>
                 </div>
               </div>
-            </PinContainer>
-          </div>
+            </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </section>
   );
 };
 
