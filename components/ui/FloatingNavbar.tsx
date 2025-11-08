@@ -62,30 +62,25 @@ export const FloatingNav = ({
     navItem.name.toLowerCase() === "career" ||
     navItem.name.toLowerCase() === "careers";
 
+  const buttonClasses = cn(
+  "px-4 py-2 rounded-md transition-all duration-200 font-medium text-sm md:text-base",
+  "bg-transparent text-slate-800 border border-transparent",
+  "hover:bg-blue-400 hover:text-white"
+);
+
   return isCareer ? (
     <a
       key={`link=${idx}`}
       href={navItem.link}
       target="_blank"
-      className={cn(
-        "relative items-center flex space-x-2 text-slate-800 hover:text-slate-900"
-      )}
+      rel="noopener noreferrer"
+      className="flex items-center"
     >
-      <span className="text-base font-medium !cursor-pointer">
-        {navItem.name}
-      </span>
+      <button className={buttonClasses}>{navItem.name}</button>
     </a>
   ) : (
-    <Link
-      key={`link=${idx}`}
-      href={navItem.link}
-      className={cn(
-        "relative items-center flex space-x-2 text-slate-800 hover:text-slate-900"
-      )}
-    >
-      <span className="text-base font-medium !cursor-pointer">
-        {navItem.name}
-      </span>
+    <Link key={`link=${idx}`} href={navItem.link} className="flex items-center">
+      <button className={buttonClasses}>{navItem.name}</button>
     </Link>
   );
 })}

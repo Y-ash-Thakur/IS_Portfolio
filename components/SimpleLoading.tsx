@@ -7,20 +7,19 @@ const SimpleLoading = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const texts = [
-    "नमस्ते", "Namaste", "নমস্কার", "ನಮಸ್ಕಾರ", 
-    "નમસ્તે", "నమస్కారం", "வணக்கம்", "नमस्कार"
+    "नमस्ते", "Namaste", "নমস্কার", "ನಮಸ್ಕಾರ", "नमस्कार", "Hello",
   ];
 
   useEffect(() => {
-    // change text every 800ms
+    // change text every 0.6sec
     const textInterval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length); // it is used to restart the index after reaching the last element
-    },800);
+    },600);
 
     const timer = setTimeout(() => {
       setShow(false);
       clearInterval(textInterval);
-    }, 7000); // hide after 7 seconds
+    }, 3500); // hide after 3.5 seconds
 
     return () => {
       clearInterval(textInterval);

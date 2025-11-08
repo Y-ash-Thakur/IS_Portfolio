@@ -51,10 +51,10 @@ const Home = () => {
             <FloatingNav navItems={navItems} />
             <TopAnimation />
             <About />
-            <Grid />
+            {/* <Grid /> */}
+            <Experience />
             <RecentProjects />
             <Clients />
-            <Experience />
             <Approach />
             <Footer />
           </motion.div>
