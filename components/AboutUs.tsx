@@ -34,10 +34,7 @@ const AboutUs = () => {
           className="space-y-4 sm:space-y-5 text-center"
         >
           <p className="text-sm sm:text-base md:text-lg leading-relaxed md:leading-8 text-slate-700 dark:text-slate-300 font-medium">
-            We are a team of engineers and designers crafting modern, performant digital experiences.
-            From brand websites to complex web apps, we combine design systems with scalable
-            engineering using Next.js, TypeScript and Three.js to create work that feels delightful
-            and moves your goals forward.
+           We are a tech-driven company offering complete digital services — from website and software development to AI and cloud — helping brands innovate, transform, and succeed online.
           </p>
 
           {/* Three feature boxes */}

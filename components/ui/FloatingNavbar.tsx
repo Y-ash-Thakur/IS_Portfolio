@@ -65,7 +65,7 @@ export const FloatingNav = ({
   const buttonClasses = cn(
   "px-4 py-2 rounded-md transition-all duration-200 font-medium text-sm md:text-base",
   "bg-transparent text-slate-800 border border-transparent",
-  "hover:bg-blue-400 hover:text-white"
+  "hover:bg-indigo-500 hover:text-white"
 );
 
   return isCareer ? (
