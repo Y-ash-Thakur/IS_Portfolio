@@ -18,6 +18,9 @@ export default function HashCleaner() {
     // Only run on client side
     if (typeof window === "undefined") return;
 
+    // Skip if no hash exists
+    if (!window.location.hash) return;
+
     const cleanupHash = () => {
       // Clear any existing timeout
       if (cleanupTimeoutRef.current) {
@@ -28,43 +31,46 @@ export default function HashCleaner() {
       const hash = window.location.hash;
 
       if (hash) {
-        // Find the target element
-        const element = document.querySelector(hash);
+        // Use requestAnimationFrame for better performance
+        requestAnimationFrame(() => {
+          // Find the target element
+          const element = document.querySelector(hash);
 
-        if (element) {
-          // Calculate position with offset for fixed navbar (approximately 100px)
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - 100;
+          if (element) {
+            // Calculate position with offset for fixed navbar (approximately 100px)
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - 100;
 
-          // Smooth scroll to the element
-          window.scrollTo({
-            top: Math.max(0, offsetPosition),
-            behavior: "smooth",
-          });
+            // Smooth scroll to the element
+            window.scrollTo({
+              top: Math.max(0, offsetPosition),
+              behavior: "smooth",
+            });
 
-          // Remove hash from URL after scroll completes
-          // Delay to allow smooth scroll animation to finish
-          cleanupTimeoutRef.current = setTimeout(() => {
-            if (window.location.hash) {
-              // Use replaceState to remove hash without reloading or breaking navigation
-              const cleanUrl = window.location.pathname + 
-                (window.location.search || "");
-              window.history.replaceState(null, "", cleanUrl);
-            }
-            cleanupTimeoutRef.current = null;
-          }, 1000); // Wait for smooth scroll to complete
-        } else {
-          // If element not found, remove the hash immediately
-          const cleanUrl = window.location.pathname + 
-            (window.location.search || "");
-          window.history.replaceState(null, "", cleanUrl);
-        }
+            // Remove hash from URL after scroll completes
+            // Reduced delay for faster cleanup
+            cleanupTimeoutRef.current = setTimeout(() => {
+              if (window.location.hash) {
+                // Use replaceState to remove hash without reloading or breaking navigation
+                const cleanUrl = window.location.pathname + 
+                  (window.location.search || "");
+                window.history.replaceState(null, "", cleanUrl);
+              }
+              cleanupTimeoutRef.current = null;
+            }, 600); // Reduced from 1000ms to 600ms
+          } else {
+            // If element not found, remove the hash immediately
+            const cleanUrl = window.location.pathname + 
+              (window.location.search || "");
+            window.history.replaceState(null, "", cleanUrl);
+          }
+        });
       }
     };
 
     // Handle hash on initial mount and route changes
-    // Use a small delay to ensure DOM is ready
-    const timeoutId = setTimeout(cleanupHash, 100);
+    // Reduced delay for faster execution
+    const timeoutId = setTimeout(cleanupHash, 50);
 
     return () => {
       clearTimeout(timeoutId);
@@ -84,33 +90,36 @@ export default function HashCleaner() {
         cleanupTimeoutRef.current = null;
       }
 
-      const element = document.querySelector(hash);
-      
-      if (element) {
-        // Scroll with offset for navbar
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - 100;
+      // Use requestAnimationFrame for better performance
+      requestAnimationFrame(() => {
+        const element = document.querySelector(hash);
+        
+        if (element) {
+          // Scroll with offset for navbar
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - 100;
 
-        window.scrollTo({
-          top: Math.max(0, offsetPosition),
-          behavior: "smooth",
-        });
+          window.scrollTo({
+            top: Math.max(0, offsetPosition),
+            behavior: "smooth",
+          });
 
-        // Remove hash after scroll completes
-        cleanupTimeoutRef.current = setTimeout(() => {
-          if (window.location.hash) {
-            const cleanUrl = window.location.pathname + 
-              (window.location.search || "");
-            window.history.replaceState(null, "", cleanUrl);
-          }
-          cleanupTimeoutRef.current = null;
-        }, 1000);
-      } else {
-        // Element not found, remove hash immediately
-        const cleanUrl = window.location.pathname + 
-          (window.location.search || "");
-        window.history.replaceState(null, "", cleanUrl);
-      }
+          // Remove hash after scroll completes - reduced delay
+          cleanupTimeoutRef.current = setTimeout(() => {
+            if (window.location.hash) {
+              const cleanUrl = window.location.pathname + 
+                (window.location.search || "");
+              window.history.replaceState(null, "", cleanUrl);
+            }
+            cleanupTimeoutRef.current = null;
+          }, 600); // Reduced from 1000ms to 600ms
+        } else {
+          // Element not found, remove hash immediately
+          const cleanUrl = window.location.pathname + 
+            (window.location.search || "");
+          window.history.replaceState(null, "", cleanUrl);
+        }
+      });
     };
 
     const handleHashChange = () => {
@@ -121,7 +130,7 @@ export default function HashCleaner() {
     };
 
     // Listen for hash changes (when clicking hash links)
-    window.addEventListener("hashchange", handleHashChange);
+    window.addEventListener("hashchange", handleHashChange, { passive: true });
 
     return () => {
       window.removeEventListener("hashchange", handleHashChange);

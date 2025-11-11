@@ -1,65 +1,56 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
+import { Suspense, lazy, useState } from "react";
 import { navItems } from "@/data";
-
-import Hero from "@/components/Hero";
-import Grid from "@/components/Grid";
-import Footer from "@/components/Footer";
-import Clients from "@/components/Clients";
-import Approach from "@/components/Approach";
-import Experience from "@/components/Experience";
-import RecentProjects from "@/components/RecentProjects";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
-import About from "@/components/AboutUs";
-import SimpleLoading from "@/components/SimpleLoading";
 import TopAnimation from "@/components/TopAnimation";
+import About from "@/components/AboutUs";
+import Experience from "@/components/Experience";
+import SimpleLoading from "@/components/SimpleLoading";
+
+// Lazy load below-the-fold components
+const RecentProjects = lazy(() => import("@/components/RecentProjects"));
+const Clients = lazy(() => import("@/components/Clients"));
+const Approach = lazy(() => import("@/components/Approach"));
+const Footer = lazy(() => import("@/components/Footer"));
+
+const LoadingPlaceholder = () => (
+  <div className="w-full py-20 flex items-center justify-center">
+    <div className="animate-pulse text-gray-400">Loading...</div>
+  </div>
+);
 
 const Home = () => {
-  const [showLoader, setShowLoader] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowLoader(false);
-    }, 7000);
-    return () => clearTimeout(timer);
-  }, []);
+  const [showMainContent, setShowMainContent] = useState(false);
 
   return (
     <main className="relative bg-white flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
-      <AnimatePresence mode="wait">
-        {showLoader ? (
-          <motion.div
-            key="loader"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
-          >
-            {/* <SimpleLoading /> */}
-          </motion.div>
-        ) : (
-          <motion.div
-            key="content"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="max-w-7xl w-full"
-          >
-            <FloatingNav navItems={navItems} />
-            <TopAnimation />
-            <About />
-            {/* <Grid /> */}
-            <Experience />
+      {!showMainContent ? (
+        <SimpleLoading onComplete={() => setShowMainContent(true)} />
+      ) : (
+        <div className="max-w-7xl w-full">
+          <FloatingNav navItems={navItems} />
+          <TopAnimation />
+          <About />
+          <Experience />
+
+          <Suspense fallback={<LoadingPlaceholder />}>
             <RecentProjects />
+          </Suspense>
+
+          <Suspense fallback={<LoadingPlaceholder />}>
             <Clients />
+          </Suspense>
+
+          <Suspense fallback={<LoadingPlaceholder />}>
             <Approach />
+          </Suspense>
+
+          <Suspense fallback={<LoadingPlaceholder />}>
             <Footer />
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </Suspense>
+        </div>
+      )}
     </main>
   );
 };

@@ -11,49 +11,63 @@ const pacifico = Pacifico({
 export default function Home() {
   return (
     <div className="relative flex items-center justify-center w-full h-screen overflow-hidden">
+      {/* Background Gradient */}
       <div
-  className="absolute top-0 left-0 w-full h-full z-[0]
-    bg-[radial-gradient(ellipse_120%_80%_at_80%_80%,rgba(99,102,241,0.25),rgba(255,255,255,0))]
-    dark:bg-[radial-gradient(ellipse_120%_80%_at_80%_60%,rgba(147,51,234,0.35),rgba(255,255,255,0))]"
-/>
+        className="absolute top-0 left-0 w-full h-full z-[0]
+        bg-[radial-gradient(ellipse_120%_80%_at_80%_80%,rgba(99,102,241,0.25),rgba(255,255,255,0))]
+        dark:bg-[radial-gradient(ellipse_120%_80%_at_80%_60%,rgba(147,51,234,0.35),rgba(255,255,255,0))]"
+      />
 
-      <div className="relative w-[90%] max-w-4xl flex justify-center items-center py-8 z-[10]" style={{ overflow: "visible" }}>
+      <div
+        className="relative w-[90%] max-w-4xl flex justify-center items-center py-8 z-[10]"
+        style={{ overflow: "visible" }}
+      >
         <motion.div style={{ overflow: "visible" }}>
+          {/* SpecBadge heading */}
           <motion.h1
             className={`${pacifico.className} text-center text-[10vw] md:text-[8vw] font-bold
-            bg-gradient-to-r from-[#0B123D] via-[#3F2E7A] to-[#6C1E9C]
-            text-transparent bg-clip-text select-none pointer-events-none
-            leading-[1.3] pb-8`}
+              bg-gradient-to-r from-[#0B123D] via-[#3F2E7A] to-[#6C1E9C]
+              text-transparent bg-clip-text select-none pointer-events-none
+              leading-[1.3] pb-8`}
             initial={{
               clipPath: "inset(0% 100% 0% 0%)",
               scale: 0.85,
-              opacity: 0.8,
+              opacity: 0,
             }}
             animate={{
               clipPath: "inset(0% 0% 0% 0%)",
-              scale: [0.85, 1.2, 1.1],
+              scale: [0.85, 1.1, 1],
               opacity: 1,
             }}
             transition={{
               clipPath: {
-                duration: 4.5,
+                duration: 3, // slower and smoother
                 ease: "easeInOut",
               },
               scale: {
-                delay: 4.2,
-                duration: 1,
-                ease: [0.68, -0.55, 0.27, 1.55],
+                delay: 2.5, // starts after Namaste finishes
+                duration: 1.8,
+                ease: [0.34, 1.56, 0.64, 1], // springy but elegant
+              },
+              opacity: {
+                duration: 1.5,
+                ease: "easeOut",
               },
             }}
           >
             SpecBadge
           </motion.h1>
 
+          {/* Subtitle */}
           <motion.h5
             className="text-gray-500 text-sm md:text-base font-semibold text-center tracking-wide"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 5.2, duration: 0.6, ease: "easeOut" }}
+            transition={{
+              delay: 4, // after title completes
+              duration: 0.8,
+              ease: "easeOut",
+            }}
           >
             Fueling Potential, Transforming Future
           </motion.h5>
@@ -61,9 +75,13 @@ export default function Home() {
           {/* Social Icons */}
           <motion.div
             className="flex gap-4 mt-6 justify-center"
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 5.2, duration: 0.6, ease: "easeOut" }}
+            transition={{
+              delay: 4,
+              duration: 0.8,
+              ease: "easeOut",
+            }}
           >
             {/* WhatsApp Icon */}
             <button

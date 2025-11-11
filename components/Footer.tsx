@@ -46,7 +46,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand Info */}
           <div>
-            <h2 className="text-2xl font-bold mb-3 text-indigo-400">
+            <h2 className="text-2xl font-bold mb-3 text-purple">
               SpecBadge
             </h2>
             <p className="leading-relaxed text-white/80">
@@ -68,7 +68,7 @@ const Footer = () => {
               <li>Thu: 08:00 AM - 10:00 PM</li>
               <li>Fri: 08:00 AM - 10:00 PM</li>
               <li>Sat: 09:00 AM - 09:00 PM</li>
-              <li className="text-green-400">Sun: Closed</li>
+              <li className="text-purple">Sun: Closed</li>
             </ul>
           </div>
 
