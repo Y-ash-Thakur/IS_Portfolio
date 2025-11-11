@@ -1,31 +1,31 @@
-"use client";
-import React, { useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useMotionValueEvent,
-} from "framer-motion";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+    "use client";
+    import React, { useState } from "react";
+    import {
+      motion,
+      AnimatePresence,
+      useScroll,
+      useMotionValueEvent,
+    } from "framer-motion";
+    import Link from "next/link";
+    import { cn } from "@/lib/utils";
 
-export const FloatingNav = ({
-  navItems,
-  className,
-}: {
-  navItems: {
-    name: string;
-    link: string;
-    icon?: JSX.Element;
-  }[];
-  className?: string;
-}) => {
-  const { scrollYProgress } = useScroll();
-  const [visible, setVisible] = useState(true);
+    export const FloatingNav = ({
+      navItems,
+      className,
+    }: {
+      navItems: {
+        name: string;
+        link: string;
+        icon?: JSX.Element;
+      }[];
+      className?: string;
+    }) => {
+      const { scrollYProgress } = useScroll();
+      const [visible, setVisible] = useState(true);
 
-  useMotionValueEvent(scrollYProgress, "change", () => {
-    setVisible(true);
-  });
+      useMotionValueEvent(scrollYProgress, "change", () => {
+        setVisible(true);
+      });
 
   return (
     <AnimatePresence mode="wait">

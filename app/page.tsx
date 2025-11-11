@@ -25,19 +25,19 @@ const Home = () => {
   const [hasPlayedIntro, setHasPlayedIntro] = useState(false);
 
   useEffect(() => {
-    // Check if intro has already been played (in localStorage)
-    const introPlayed = localStorage.getItem("introPlayed");
+    // Check sessionStorage (not localStorage)
+    const introPlayed = sessionStorage.getItem("introPlayed");
 
     if (introPlayed === "true") {
-      // Skip animation immediately
+      // Skip Namaste animation if already played this session
       setHasPlayedIntro(true);
       setShowMainContent(true);
     }
   }, []);
 
   const handleIntroComplete = () => {
-    // Mark intro as played
-    localStorage.setItem("introPlayed", "true");
+    // Mark intro as played for this session only
+    sessionStorage.setItem("introPlayed", "true");
     setShowMainContent(true);
   };
 
