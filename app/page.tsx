@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { navItems } from "@/data";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import TopAnimation from "@/components/TopAnimation";
@@ -22,11 +22,29 @@ const LoadingPlaceholder = () => (
 
 const Home = () => {
   const [showMainContent, setShowMainContent] = useState(false);
+  const [hasPlayedIntro, setHasPlayedIntro] = useState(false);
+
+  useEffect(() => {
+    // Check if intro has already been played (in localStorage)
+    const introPlayed = localStorage.getItem("introPlayed");
+
+    if (introPlayed === "true") {
+      // Skip animation immediately
+      setHasPlayedIntro(true);
+      setShowMainContent(true);
+    }
+  }, []);
+
+  const handleIntroComplete = () => {
+    // Mark intro as played
+    localStorage.setItem("introPlayed", "true");
+    setShowMainContent(true);
+  };
 
   return (
     <main className="relative bg-white flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
-      {!showMainContent ? (
-        <SimpleLoading onComplete={() => setShowMainContent(true)} />
+      {!showMainContent && !hasPlayedIntro ? (
+        <SimpleLoading onComplete={handleIntroComplete} />
       ) : (
         <div className="max-w-7xl w-full">
           <FloatingNav navItems={navItems} />
