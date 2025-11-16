@@ -3,7 +3,6 @@ export const navItems = [
   { name: "Projects", link: "#projects" },
   { name: "Services", link: "#Services" },
   { name: "Contact", link: "#contact" },
-  { name: "Careers", link: "_blank"},
 ];
 
 export const gridItems = [
@@ -182,7 +181,7 @@ export const workExperience = [
   },
   {
     id: 3,
-    title: "Digital Media & Marketing",
+    title: "AI Development & Agents",
     desc: "Accelerate your brand growth with result-oriented digital marketing campaigns and creative storytelling.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp3.svg",

@@ -92,22 +92,21 @@ const ServicesPage = () => {
     },
     {
       icon: "📣",
-      title: "Digital Media & Marketing",
+      title: "AI Development & Agents",
       description:
-        "Accelerate your brand growth with result-oriented digital marketing campaigns and creative storytelling.",
+        "Accelerate your brand growth with result-driven AI solutions and intelligent automation.",
       offerTitle: "Our Services Include:",
       items: [
-        "Social Media Marketing (SMM)",
-        "Digital Media Marketing (DMM)",
-        "Search Engine Optimization (SEO)",
-        "Paid Ads (Google, Meta, LinkedIn)",
-        "Branding & Visual Design",
-        "Creative Content Strategy",
-        "Email & Performance Marketing",
-        "Reputation Management",
+        "AI-Powered Chatbots & Virtual Assistants",
+        "Custom AI Agent Solutions for Automation",
+        "Natural Language Processing (NLP) & LLM Integration",
+        "Workflow Automation using AI APIs (OpenAI, Gemini, etc.)",
+        "AI Strategy Consulting & Implementation",
+        "📈 Digital Strategy & Marketing",
+        "Social Media Marketing & Management",
+        "Content Strategy & Brand Communication",
+        "Data Analytics & Conversion Optimization"
       ],
-      techStack:
-        "Platforms We Manage: Instagram · LinkedIn · Google · X (Twitter) · YouTube · Facebook",
     },
   ];
 

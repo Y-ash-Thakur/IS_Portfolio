@@ -8,10 +8,8 @@ const AboutUs = () => {
       id="about"
       className="relative w-full py-14 sm:py-16 md:py-20 mt-2 sm:mt-6 md:mt-10 z-20 scroll-mt-24 bg-white overflow-hidden"
     >
-      {/* 🟣 Subtle Dotted Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle,_#6b7280_1.5px,_transparent_1.5px)] [background-size:14px_14px] opacity-40 pointer-events-none" />
 
-      {/* Centered heading outside the card */}
       <div className="max-w-6xl mx-auto mb-5 sm:mb-6 md:mb-8 text-center px-4 sm:px-6 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -24,7 +22,6 @@ const AboutUs = () => {
         </motion.h2>
       </div>
 
-      {/* Content Card */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 gap-6 sm:gap-8 md:gap-12 rounded-2xl md:rounded-3xl border border-neutral-200/60 dark:border-neutral-800 bg-gradient-to-br from-white via-purple-50/30 to-white dark:from-neutral-900 dark:via-purple-950/20 dark:to-neutral-900 px-4 sm:px-8 md:px-12 py-6 sm:py-8 md:py-12 shadow-[0_10px_40px_-12px_rgba(0,0,0,0.15)] backdrop-blur-sm relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -37,12 +34,11 @@ const AboutUs = () => {
            We are a tech-driven company offering complete digital services — from website and software development to AI and cloud — helping brands innovate, transform, and succeed online.
           </p>
 
-          {/* Three feature boxes */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {[
-              { label: "Focus", text: "Performance & Accessibility" },
-              { label: "Stack", text: "Next.js, TypeScript, Tailwind" },
-              { label: "Approach", text: "Design-led, data-informed" },
+              { label: "TECHNOLOGY", text: "Robust & Scalable Engineering" },
+              { label: "CREATIVITY", text: "Innovation design & Branding" },
+              { label: "SUPPORT", text: "Dedicated partnership every step on the way" },
             ].map((item, i) => (
               <motion.div
                 key={i}
