@@ -35,7 +35,7 @@ const RecentProjects = () => {
                 <div className="relative flex flex-col justify-between bg-white rounded-3xl border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-visible">
                   
                   {/* Image Section */}
-                  <div className="relative flex items-center justify-center w-full h-[200px] md:h-[220px] bg-[#13162D] overflow-visible rounded-t-3xl">
+                  <div className="relative flex items-center justify-center w-full h-[200px] md:h-[220px] bg-[#13162D] overflow-hidden rounded-t-3xl">
                     <div className="absolute inset-0">
                       <img
                         src="/bg.png"

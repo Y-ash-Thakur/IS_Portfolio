@@ -72,17 +72,17 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
+    title: "Freshcon",
+    des: "India's 1st Pre-cooked Ingredients Range",
+    img: "/freshcon.png",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
     link: "/ui.earth.com",
   },
   {
     id: 2,
-    title: "Yoom - Video Conferencing App",
+    title: "Trailbaze",
     des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
+    img: "/Trailbaze.JPG",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
     link: "/ui.yoom.com",
   },
@@ -110,24 +110,28 @@ export const testimonials = [
       "SpecBadge did an excellent job building ourwebsite. Its user-friendly, professional, andperfectly represents our brand. Their attentionto detail and support throughout the processwere truly commendable.",
     name: "Mr. Dilip Singh Rathore",
     title: "Director - Arogya Samadhan",
+    image: "/profile.svg",
   },
   {
     quote:
       "The HRMS developed for our Hospital hasgreatly simplified our staff management andadministrative operations. Its efficient, easyto use, and perfectly customized to meet theunique needs of our healthcare setup. Theteams professionalism and timely deliverytruly exceeded our expectations.",
     name: "Dr. Shivani Soni",
     title: "Dentist",
+    image: "/profile.svg",
   },
   {
     quote:
       "The gym management system developed for ushas completely transformed how we handlememberships, attendance, and payments. Its efficient, reliable, and perfectly tailored to ourrequirements.",
     name: "Mr. Aradhya Tyagi",
     title: "Owner - Prime Fitness Gym",
+    image: "/gym_Owner.jpeg",
   },
   {
     quote:
       "Our travel website was delivered exactly aswe envisioned—mdern, fast, and easy tomanage. The team understood our businessneeds and turned them into a beautifullyfunctional platform.",
     name: "Mr. Shivam Singh",
     title: "Owner - Trail Blaze",
+    image: "/profile.svg",
   },
 ];
 

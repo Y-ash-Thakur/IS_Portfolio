@@ -3,6 +3,13 @@
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
+type TestimonialItem = {
+  quote: string;
+  name: string;
+  title: string;
+  image: string;
+};
+
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
@@ -10,11 +17,7 @@ export const InfiniteMovingCards = ({
   pauseOnHover = true,
   className,
 }: {
-  items: {
-    quote: string;
-    name: string;
-    title: string;
-  }[];
+  items: TestimonialItem[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
@@ -83,7 +86,7 @@ export const InfiniteMovingCards = ({
         ref={scrollerRef}
         className={cn(
           // change gap-16
-          " flex min-w-full shrink-0 gap-16 py-4 w-max flex-nowrap",
+          "flex min-w-full shrink-0 gap-16 py-4 w-max flex-nowrap",
           start && "animate-scroll ",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -99,26 +102,24 @@ export const InfiniteMovingCards = ({
               background: "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
             }}
           >
-            <blockquote className="flex flex-col justify-between h-full">
+            <blockquote className="flex h-full flex-col justify-between">
               {/* Quote section */}
-              <span className="relative z-20 text-sm sm:text-base md:text-lg leading-[1.6] text-white font-normal">
+              <span className="relative z-20 text-sm font-normal leading-[1.6] text-white sm:text-base md:text-lg">
                 {item.quote}
               </span>
 
               {/* Fixed bottom name section */}
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <div className="me-3">
-                  <img
-                    src="/profile.svg"
-                    alt="profile"
-                    className="w-8 h-8 sm:w-10 sm:h-10"
-                  />
-                </div>
-                <span className="flex flex-col gap-1">
-                  <span className="text-base sm:text-lg font-bold leading-[1.6] text-white">
+              <div className="relative z-20 mt-6 flex items-center gap-3 rounded-full bg-white/5 px-3 py-2 sm:gap-4 sm:px-4">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="h-8 w-8 rounded-full object-cover sm:h-10 sm:w-10"
+                />
+                <span className="flex flex-col gap-0.5">
+                  <span className="text-base font-semibold leading-[1.4] text-white sm:text-lg">
                     {item.name}
                   </span>
-                  <span className="text-xs sm:text-sm leading-[1.6] text-white-200 font-normal">
+                  <span className="text-xs font-normal leading-[1.4] text-white/70 sm:text-sm">
                     {item.title}
                   </span>
                 </span>
