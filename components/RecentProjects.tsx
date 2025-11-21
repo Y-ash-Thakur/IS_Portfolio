@@ -1,37 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa6";
 import { projects } from "@/data";
 import { PinContainer } from "./ui/Pin";
 
 const RecentProjects = () => {
+  // Duplicate projects exactly 2x for seamless infinite loop (0% to -50% translation)
+  const duplicatedProjects = [...projects, ...projects];
+
   return (
-    <section className="py-20 relative overflow-visible" id="projects">
+    <section className="py-20 relative overflow-hidden" id="projects">
       <h1 className="heading text-black text-center mb-10">
         A small selection of{" "}
         <span className="text-purple">recent projects</span>
       </h1>
 
-      {/* Horizontal Scroll Carousel */}
-      <motion.div
-        className="flex overflow-x-auto overflow-y-visible gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 md:px-8 snap-x snap-mandatory scrollbar-hide cursor-grab pb-10"
-        whileTap={{ cursor: "grabbing" }}
-        style={{ overscrollBehaviorX: "contain" }}
-      >
-        {projects.map((item) => (
-          <motion.div
-            key={item.id}
-            className="snap-center flex-shrink-0 w-[80vw] sm:w-[55vw] md:w-[35vw] lg:w-[25vw] relative overflow-visible"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-          >
-            <div className="relative overflow-visible">
-              <PinContainer
-                title={item.title}
-                href={item.link}
-              >
-                {/* Card */}
+      {/* Infinite Loop Container - Pure CSS Animation */}
+      <div className="marquee-container relative w-full" style={{ "--marquee-speed": "30s" } as React.CSSProperties}>
+        <div className="marquee flex gap-10 md:gap-12 lg:gap-14">
+          {duplicatedProjects.map((item, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 w-[75vw] sm:w-[50vw] md:w-[33vw] lg:w-[25vw]"
+            >
+              <PinContainer title={item.title} href={item.link}>
                 <div className="relative flex flex-col justify-between bg-white rounded-3xl border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-visible">
                   
                   {/* Image Section */}
@@ -56,21 +48,19 @@ const RecentProjects = () => {
                       {item.title}
                     </h1>
 
-                    <p
-                      className="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-2 mb-4"
-                    >
+                    <p className="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-2 mb-4">
                       {item.des}
                     </p>
 
                     <div className="flex items-center justify-between mt-6 pt-2 border-t border-gray-100">
                       {/* Tech Icons */}
                       <div className="flex items-center">
-                        {item.iconLists.map((icon, index) => (
+                        {item.iconLists.map((icon, idx) => (
                           <div
-                            key={index}
+                            key={idx}
                             className="border border-gray-200 rounded-full bg-black w-8 h-8 flex justify-center items-center"
                             style={{
-                              transform: `translateX(-${4 * index}px)`,
+                              transform: `translateX(-${4 * idx}px)`,
                             }}
                           >
                             <img src={icon} alt="icon" className="p-2" />
@@ -88,9 +78,9 @@ const RecentProjects = () => {
                 </div>
               </PinContainer>
             </div>
-          </motion.div>
-        ))}
-      </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
