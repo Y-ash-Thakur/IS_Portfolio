@@ -10,7 +10,7 @@ const pacifico = Pacifico({
 
 export default function Home() {
   return (
-    <div className="relative flex items-center justify-center w-full h-screen overflow-hidden">
+    <div className="relative flex items-center justify-center w-full h-screen overflow-visible">
       {/* Background Gradient */}
       <div
         className="absolute top-0 left-0 w-full h-full z-[0]
@@ -26,9 +26,10 @@ export default function Home() {
           {/* SpecBadge heading */}
           <motion.h1
             className={`${pacifico.className} text-center text-[10vw] md:text-[8vw] font-bold
-              bg-gradient-to-r from-[#0B123D] via-[#3F2E7A] to-[#6C1E9C]
-              text-transparent bg-clip-text select-none pointer-events-none
-              leading-[1.3] pb-8`}
+            bg-gradient-to-r from-[#0B123D] via-[#3F2E7A] to-[#6C1E9C]
+            text-transparent bg-clip-text select-none pointer-events-none
+            leading-[1.45] pb-10`} // <-- updated
+
             initial={{
               clipPath: "inset(0% 100% 0% 0%)",
               scale: 0.85,
