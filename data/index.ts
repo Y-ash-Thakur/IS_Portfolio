@@ -96,7 +96,7 @@ export const projects = [
   },
   {
     id: 4,
-    title: "Specfit 360",
+    title: "SpecFit 360",
     des: " All-in-one gym management software built by SpecBadge to simplify and streamline fitness business operations. From membership management and attendance tracking to trainer scheduling, payment handling, and progress monitoring, SpecFit 360 brings every essential feature into a single, powerful platform. Designed with a clean, intuitive interface, it helps gym owners save time, improve member experience, and run their fitness centers more efficiently. This project highlights SpecBadge’s ability to create smart, scalable digital solutions tailored for real-world business needs.",
     img: "/prime_fitness.png",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
