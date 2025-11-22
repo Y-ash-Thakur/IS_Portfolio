@@ -21,7 +21,7 @@ const Footer = () => {
           Ready to take <span className="text-purple">your</span> digital presence to the next level?
         </h1>
         <p className="text-black-200 mt-4 md:mt-6 text-base max-w-[600px]">
-          Reach out to us today and let's discuss how we can help you achieve your goals.
+          Reach out to us today and let&apos;s discuss how we can help you achieve your goals.
         </p>
       </div>
 

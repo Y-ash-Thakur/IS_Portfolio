@@ -86,7 +86,7 @@ export default function Home() {
           >
             {/* WhatsApp Icon */}
             <button
-              onClick={() => window.open("https://wa.me/1234567890", "_blank")}
+              onClick={() => window.open("https://wa.me/918989138391", "_blank")}
               className="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 hover:border-green-400/50 transition-all duration-300 group"
               title="Contact on WhatsApp"
             >
@@ -96,7 +96,7 @@ export default function Home() {
             {/* Instagram Icon */}
             <button
               onClick={() =>
-                window.open("https://instagram.com/yourusername", "_blank")
+                window.open("https://www.instagram.com/specbadge.exe?igsh=djl3eGw1OGR3OWdp", "_blank")
               }
               className="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 hover:border-pink-500/50 transition-all duration-300 group"
               title="Follow on Instagram"
