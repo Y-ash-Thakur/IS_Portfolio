@@ -122,8 +122,8 @@ export const testimonials = [
   {
     quote:
       "The gym management system developed for ushas completely transformed how we handlememberships, attendance, and payments. Its efficient, reliable, and perfectly tailored to ourrequirements.",
-    name: "Mr. Aradhya Tyagi",
-    title: "Owner - Prime Fitness Gym",
+    name: "Mr. Raghav Gupta",
+    title: "Owner - Priority Fitness",
     image: "/gym_Owner.jpeg",
   },
   {
