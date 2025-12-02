@@ -110,7 +110,7 @@ export const testimonials = [
       "SpecBadge did an excellent job building ourwebsite. Its user-friendly, professional, andperfectly represents our brand. Their attentionto detail and support throughout the processwere truly commendable.",
     name: "Mr. Dilip Singh Rathore",
     title: "Director - Arogya Samadhan",
-    image: "/profile.svg",
+    image: "/ArogyaSamadhanDirector.jpeg",
   },
   {
     quote:
