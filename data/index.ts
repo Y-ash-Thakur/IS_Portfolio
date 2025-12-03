@@ -131,7 +131,7 @@ export const testimonials = [
       "Our travel website was delivered exactly aswe envisioned—mdern, fast, and easy tomanage. The team understood our businessneeds and turned them into a beautifullyfunctional platform.",
     name: "Mr. Shivam Singh",
     title: "Owner - Trail Blaze",
-    image: "/profile.svg",
+    image: "/TrailBazeOwner.jpeg",
   },
 ];
 
